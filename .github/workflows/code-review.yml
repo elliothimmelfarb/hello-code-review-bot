@@ -22,5 +22,5 @@ jobs:
     - name: print diff
       id: print diff
       run: |
-        echo steps.diff.output.diff
+        echo "${steps.diff.output.diff}"
         
