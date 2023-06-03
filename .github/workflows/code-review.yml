@@ -19,10 +19,10 @@ jobs:
     - name: Generate diff
       id: diff
       run: |
-        echo "hello=hi" >> $GITHUB_ENV
+        echo "diff=$(git diff origin/${{ github.base_ref }}..${{ github.head_ref }})" >> $GITHUB_ENV
     
     - name: print diff
       id: print_diff
       run: |
-        echo "${{ env.hello }}"
+        echo "${{ env.diff }}"
         
