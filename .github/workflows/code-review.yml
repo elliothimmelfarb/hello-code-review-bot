@@ -1,0 +1,26 @@
+name: GPT-4 Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    name: Run Code Review
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # This is required to fetch all history for comparisons
+
+    - name: Generate diff
+      id: diff
+      run: |
+        echo "::set-output name=diff::$(git diff origin/${{ github.base_ref }}..${{ github.head_ref }})"
+    
+    - name: print diff
+      id: print diff
+      run: |
+        echo steps.diff.output.diff
+        
