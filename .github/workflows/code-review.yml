@@ -19,10 +19,10 @@ jobs:
     - name: Generate diff
       id: diff
       run: |
-        echo "hello=hello" >> $GITHUB_ENV
+        echo "hello=hi" >> $GITHUB_ENV
     
     - name: print diff
       id: print_diff
       run: |
-        echo "${env.hello}"
+        echo "${{ env.hello }}"
         
